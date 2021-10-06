@@ -1,0 +1,118 @@
+﻿@model SalaryCalculator.Models.Employee
+
+<br />
+<h2 class="text-info">@(Model.Id !=0 ? "Edit" : "Create") Employee</h2>
+<hr />
+<div class="border container">
+    <br />
+    <div class="row">
+        <div class="col-md-8 offset-2">
+            <form id="form" method="post">
+                @if (Model.Id != 0)
+                {
+                    <input type="hidden" asp-for="Id" />
+                }
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Adress" class="control-label"></label>
+                    <input asp-for="Adress" class="form-control" />
+                    <span asp-validation-for="Adress" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Salary.NetSalary" class="control-label"></label>
+                    <input asp-for="Salary.NetSalary" class="form-control" id="netSalary" />
+                    <span asp-validation-for="Salary.NetSalary" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Salary.TaxableBase" class="control-label"></label>
+                    <input asp-for="Salary.TaxableBase" class="form-control" id="taxableBasa" ReadOnly="readonly" />
+                    <span asp-validation-for="Salary.TaxableBase" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Salary.Tax" class="control-label"></label>
+                    <input asp-for="Salary.Tax" class="form-control" id="tax" ReadOnly="readonly" />
+                    <span asp-validation-for="Salary.Tax" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Salary.PioTaxEmployee" class="control-label"></label>
+                    <input asp-for="Salary.PioTaxEmployee" class="form-control" id="pioTaxEmployee" ReadOnly="readonly" />
+                    <span asp-validation-for="Salary.PioTaxEmployee" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Salary.HeltTaxEmployee" class="control-label"></label>
+                    <input asp-for="Salary.HeltTaxEmployee" class="form-control" id="heltTaxEmployee" ReadOnly="readonly" />
+                    <span asp-validation-for="Salary.HeltTaxEmployee" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Salary.UnemploymentTaxEmployee" class="control-label"></label>
+                    <input asp-for="Salary.UnemploymentTaxEmployee" asp- class="form-control" id="unemploymentTaxEmployee" ReadOnly="readonly" />
+                    <span asp-validation-for="Salary.UnemploymentTaxEmployee" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Salary.GrossSalary" class="control-label"></label>
+                    <input asp-for="Salary.GrossSalary" class="form-control" id="grossSalary" ReadOnly="readonly" />
+                    <span asp-validation-for="Salary.GrossSalary" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Salary.PioTaxEmployer" class="control-label"></label>
+                    <input asp-for="Salary.PioTaxEmployer" class="form-control" id="pioTaxEmployer" ReadOnly="readonly" />
+                    <span asp-validation-for="Salary.PioTaxEmployer" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Salary.HeltTaxEmployer" class="control-label"></label>
+                    <input asp-for="Salary.HeltTaxEmployer" class="form-control" id="heltTaxEmployer" ReadOnly="readonly" />
+                    <span asp-validation-for="Salary.HeltTaxEmployer" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Salary.SuperGrossSalary" class="control-label"></label>
+                    <input asp-for="Salary.SuperGrossSalary" class="form-control" id="superGrossSalary" ReadOnly="readonly" />
+                    <span asp-validation-for="Salary.SuperGrossSalary" class="text-danger"></span>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-primary form-control" onclick="cekFromUpdate()" id="subButton">
+                            @(Model.Id !=0 ? "Update" : "Create")
+                        </button>
+                    </div>
+
+                    <div class="col-md-3">
+                        <a asp-action="Index" class="btn btn-success form-control">
+                            Back to List
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="btn btn-info form-control text-white" onclick="Calculate()">
+                            Calculate
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<!--JS calculating salary and checking if it is calculated-->
+<script src="~/js/calculateSalary.js"></script>
+
+
+
+

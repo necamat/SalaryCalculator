@@ -1,0 +1,49 @@
+﻿
+<style>
+
+    div.dataTables_wrapper {
+        margin: 0 auto;
+    }
+</style>
+
+
+<br />
+<div class="comtainer row p-0 m-0">
+    <div class="col-6">
+        <h2 class="text-info">Employes List</h2>
+    </div>
+    <div class="col-3 offset-3">
+        <a asp-action="Upsert" asp-controller="EmployeeSalary" class="btn btn-info form-control text-white">
+            Create New Employee
+        </a>
+    </div>
+
+    <!-- Table  https://datatables.net/ -->
+
+    <div class="col-12 ">
+
+        <table id="DT_load" class="display nowrap" style="width:100%">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Neto Salary</th>
+                    <th>Tax</th>
+                    <th>PIO Employee</th>
+                    <th>Helt Tax Employee</th>
+                    <th>Unp Tax</th>
+                    <th>Gross Salary</th>
+                    <th>PIO Employer</th>
+                    <th>Helt Tax Employee</th>
+                    <th>Super Gross Salary</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<!--JS Load table and alret after deletion -->
+@section Scripts{
+    <script src="~/js/employeeList.js"></script>
+}
